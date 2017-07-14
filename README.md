@@ -28,7 +28,7 @@
 - catch_copy      :string
 - text            :string
 - user            :references, foreign_key :true
-- likes_count     :integer
+- likes_count     :integer, default: 0 
 
 # Prototype_image
 
