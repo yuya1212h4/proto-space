@@ -1,24 +1,65 @@
-# README
+# User
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## association
+- has_many :prototypes, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 
-Things you may want to cover:
+## columns
+- name        :string, null: false
+- email       :string, null: false, unique: true
+- password    :string, null: false
+- member      :text
+- profile     :text
+- works       :text
+- user_image  :string
 
-* Ruby version
 
-* System dependencies
+# Prototype
 
-* Configuration
+## association
+- belongs_to :user
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :prototype_images, dependent: :destroy
 
-* Database creation
+## columns
+- title           :string, null: false
+- catch_copy      :string
+- text            :string
+- user            :references, foreign_key :true
+- likes_count     :integer, default: 0 
 
-* Database initialization
+# Prototype_image
 
-* How to run the test suite
+## association
+- belongs_to :prototype
 
-* Services (job queues, cache servers, search engines, etc.)
+## columns
+- image           :string, null: false
+- image_type      :integer {main: 0, sub: 1}, null: false
+- prototype       :references, foreign_key :true
 
-* Deployment instructions
 
-* ...
+# Comments
+
+## association
+- belongs_to :prototype
+- belongs_to :user
+
+## columns
+- content        :string, null: false
+- user           :references, foreign_key :true
+- prototype      :references, foreign_key :true
+
+
+# likes
+
+## association
+- belongs_to :prototype, counter_cache: :likes_count
+- belongs_to :user
+
+
+## columns
+- user          :references, foreign_key :true
+- prototype     :references, foreign_key :true
