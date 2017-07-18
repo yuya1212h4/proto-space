@@ -1,0 +1,31 @@
+.container.user-new
+  .col-md-8.col-md-offset-2
+    %header.row.user-nav.row
+      .col-md-12
+        %h2 Edit Profile
+        .user-name_image.row
+          = form_for current_user do |f|
+            .user-name.col-md-10
+              = f.text_field :name
+            .user-image.col-md-2{style: 'background-image: url(http://泣ける動画.com/wp-content/uploads/2015/01/t0205-01.jpg);'}
+              %button.btn.btn-primary Change image
+              = f.file_field :user_image
+            .user-email
+              = f.email_field :email, placeholder: "E-Mail"
+            .user-password
+              = f.password_field :password, placeholder: "Password"
+            .col-md-12
+              %h4 Member of
+              .user-user-member.row
+                .user-name.col-md-12
+                  = f.text_field :member, placeholder: "Member"
+              %h4 Profile
+              .user-user-profile.row
+                .user-name.col-md-12
+                  = f.text_area :profile, placeholder: "Profile", cols: "30", rows: "4"
+              %h4 Works
+              .user-name_image.row
+                .user-name.col-md-12
+                  = f.text_area :works, placeholder: "Works", cols: "30", rows: "4"
+              .row.text-center.user-btn
+                = f.submit 'Save',class: "btn btn-lg btn-primary btn-block"
