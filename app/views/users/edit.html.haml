@@ -5,6 +5,10 @@
         %h2 Edit Profile
         .user-name_image.row
           = form_for current_user do |f|
+            - if current_user.errors.any?
+              %ul
+                - current_user.errors.full_messages.each do |msg|
+                  %li= msg
             .user-name.col-md-10
               = f.text_field :name
             .user-image.col-md-2{style: 'background-image: url(http://泣ける動画.com/wp-content/uploads/2015/01/t0205-01.jpg);'}
