@@ -1,7 +1,7 @@
 class CreatePrototypes < ActiveRecord::Migration[5.0]
   def change
     create_table :prototypes do |t|
-      t.string :string, null: false
+      t.string :title, null: false
       t.string :catch_copy
       t.string :text
       t.references :user, foreign_key: true
