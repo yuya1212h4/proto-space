@@ -1,0 +1,2 @@
+class PrototypeImage < ApplicationRecord
+end
