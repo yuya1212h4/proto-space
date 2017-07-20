@@ -1,0 +1,14 @@
+.col-sm-4.col-md-3.proto-content
+  .thumbnail
+    = link_to prototype_path(prototype) do
+      -# = image_tag(prototype.prototype_images.image.url) if  prototype.prototype_images[0].present?
+      .caption
+        %h3= prototype.title
+        .proto-meta
+          .proto-user
+            = link_to "#{prototype.user.name}", user_path(prototype.user)
+          .proto-posted
+            = prototype.created_at
+        %ul.proto-tag-list.list-inline
+          %li
+            = link_to "iPad", "#", class: "btn btn-default"
