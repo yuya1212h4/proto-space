@@ -13,7 +13,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to prototype_path(@prototype)
     else
-      flash[:alert] = 'prototype do not created' 
+      flash[:alert] = 'prototype do not create' 
       render :new
     end
   end
