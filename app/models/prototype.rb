@@ -12,6 +12,10 @@ class Prototype < ApplicationRecord
   validates :catch_copy, presence: true
   validates :PrototypeImage, presence: true
 
+  def  main_prototype_image
+    prototype_images.first.image.url
+  end
+
  def PrototypeImage
    prototype_images[0].image if prototype_images[0].present?
  end

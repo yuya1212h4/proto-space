@@ -2,7 +2,7 @@
   -# アクションボタンの追加
   .thumbnail
     = link_to prototype_path(prototype) do
-      = image_tag prototype.prototype_images.first.image.url if prototype.prototype_images.first.present?
+      = image_tag prototype.main_prototype_image
       .caption
         %h3= prototype.title
         .proto-meta
