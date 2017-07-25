@@ -5,4 +5,5 @@ class PrototypeImage < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :image, presence: true
+  validates :image_type, presence: true
 end
