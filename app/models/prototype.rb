@@ -6,7 +6,10 @@ class Prototype < ApplicationRecord
   has_many :prototype_images, dependent: :destroy
   accepts_nested_attributes_for :prototype_images, reject_if: :reject_posts
 
+  # FIXME: それぞれのエラーが個別で出力されるように修正
   validates :title, presence: true
+  validates :text, presence: true
+  validates :catch_copy, presence: true
   validates :PrototypeImage, presence: true
 
  def PrototypeImage
