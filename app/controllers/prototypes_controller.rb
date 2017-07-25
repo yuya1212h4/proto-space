@@ -14,6 +14,7 @@ class PrototypesController < ApplicationController
       redirect_to root_path, notice: 'Successful posting of prototype.'
     else
       flash[:alert] = 'prototype do not create'
+      # FIXME: creteに失敗してリロードを行うとエラーになる
       render :new
     end
   end
