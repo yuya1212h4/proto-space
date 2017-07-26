@@ -9,7 +9,7 @@
           .proto-user
             = link_to "#{prototype.user.name}", user_path(prototype.user)
           .proto-posted
-            = prototype.created_at
+            = I18n.l prototype.created_at, format: :monthday
         %ul.proto-tag-list.list-inline
           %li
             = link_to "iPad", "#", class: "btn btn-default"
