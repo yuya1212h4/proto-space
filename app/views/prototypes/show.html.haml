@@ -3,17 +3,17 @@
     .col-md-6
       .media
         .media-left
-          = link_to user_path(current_user) do
+          = link_to user_path(@prototype.user) do
             .media-object
-              = image_tag current_user.user_image.url , alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;" if current_user.user_image.present?
+              = image_tag @prototype.user.user_image.url , alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;" if @prototype.user.user_image.present?
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
           .proto-user
-            = link_to 'by User', user_path(current_user)
+            = link_to "by #{@prototype.user.name}", user_path(@prototype.user)
             %span.degree
-              = current_user.member
-              = current_user.works
+              = @prototype.user.member
+              = @prototype.user.works
     .col-md-6.text-right
       %button.btn.btn-default
         = image_tag("icon_heart.svg")
@@ -23,17 +23,8 @@
     .col-md-9
       .img-responsive
         = image_tag @prototype.prototype_images.first.image.url
-        -# = binding.pry
     .col-md-3
       %ul.proto-sub-list.list-group
-        - if @prototype.prototype_images.second.present?
-          %li.list-group-item.img-responsive
-            = image_tag @prototype.prototype_images.second.image.url
-        - if @prototype.prototype_images.third.present?
-          %li.list-group-item.img-responsive
-            = image_tag @prototype.prototype_images.third.image.url
-        -# %li.list-group-item.img-responsive
-          -# = image_tag @prototype.prototype_images.forth.image.url if @prototype.prototype_images.forth.present?
         = render partial: 'prototypes/prototype_sub_image', collection: @prototype.prototype_images, as: :prototype_sub_image
   .row.proto-description
     .col-md-3
