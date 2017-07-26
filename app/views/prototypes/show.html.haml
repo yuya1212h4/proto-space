@@ -22,7 +22,7 @@
   .row
     .col-md-9
       .img-responsive
-        = image_tag @prototype.prototype_images.first.image.url
+        = image_tag @prototype.main_prototype_image
     .col-md-3
       %ul.proto-sub-list.list-group
         = render partial: 'prototypes/prototype_sub_image', collection: @prototype.prototype_images, as: :prototype_sub_image
