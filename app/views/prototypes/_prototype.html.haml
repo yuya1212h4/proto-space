@@ -1,0 +1,15 @@
+.col-sm-4.col-md-3.proto-content
+  -# アクションボタンの追加
+  .thumbnail
+    = link_to prototype_path(prototype) do
+      = image_tag prototype.main_prototype_image
+      .caption
+        %h3= prototype.title
+        .proto-meta
+          .proto-user
+            = link_to "#{prototype.user.name}", user_path(prototype.user)
+          .proto-posted
+            = I18n.l prototype.created_at, format: :monthday
+        %ul.proto-tag-list.list-inline
+          %li
+            = link_to "iPad", "#", class: "btn btn-default"

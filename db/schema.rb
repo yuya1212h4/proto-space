@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717014246) do
+ActiveRecord::Schema.define(version: 20170719030817) do
+
+  create_table "prototype_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "image",        null: false
+    t.integer  "image_type",   null: false
+    t.integer  "prototype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["prototype_id"], name: "index_prototype_images_on_prototype_id", using: :btree
+  end
+
+  create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                   null: false
+    t.string   "catch_copy",              null: false
+    t.string   "text",                    null: false
+    t.integer  "user_id"
+    t.integer  "likes_count", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_prototypes_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
@@ -34,4 +54,6 @@ ActiveRecord::Schema.define(version: 20170717014246) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "prototype_images", "prototypes"
+  add_foreign_key "prototypes", "users"
 end
