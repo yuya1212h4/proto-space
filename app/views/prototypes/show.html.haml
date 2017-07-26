@@ -34,6 +34,7 @@
             = image_tag @prototype.prototype_images.third.image.url
         -# %li.list-group-item.img-responsive
           -# = image_tag @prototype.prototype_images.forth.image.url if @prototype.prototype_images.forth.present?
+        = render partial: 'prototypes/prototype_sub_image', collection: @prototype.prototype_images, as: :prototype_sub_image
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
