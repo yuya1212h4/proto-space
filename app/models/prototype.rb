@@ -16,12 +16,12 @@ class Prototype < ApplicationRecord
     prototype_images.first.image.url
   end
 
- def PrototypeImage
-   prototype_images[0].image if prototype_images[0].present?
- end
+  def PrototypeImage
+    prototype_images[0].image if prototype_images[0].present?
+  end
 
- def reject_posts(attributed)
-   attributed['image'].blank?
- end
+  def reject_posts(attributed)
+    attributed['image'].blank?
+  end
 
 end
