@@ -25,7 +25,7 @@
         = image_tag @prototype.main_prototype_image
     .col-md-3
       %ul.proto-sub-list.list-group
-        = render partial: 'prototypes/prototype_sub_image', collection: @prototype.prototype_images, as: :prototype_sub_image
+        = render partial: 'prototypes/prototype_sub_image', collection: @prototype.prototype_images.sub, as: :prototype_sub_image
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
