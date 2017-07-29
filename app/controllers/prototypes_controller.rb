@@ -39,6 +39,16 @@ class PrototypesController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    if @prototype.user_id == current_user.id
+      @prototype.destroy
+      redirect_to root_path, notice: 'Prototype was successfully deleted.'
+    else
+      flash[:alert] = 'Prototype do not delete.'
+      render :new
+    end
   end
 
   private
