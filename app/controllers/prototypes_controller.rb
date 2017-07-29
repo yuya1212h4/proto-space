@@ -24,14 +24,26 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    @prototype = Prototype.find(params[:id])
   end
 
   def update
+    @prototype = Prototype.find(params[:id])
+    @prototype.prototype_images
+    if @prototype.user_id == current_user.id
+      binding
+      @prototype.update(prototype_params)
+      redirect_to root_path, notice: 'Prototype was successfully updated.'
+    else
+      flash[:alert] = 'Prototype do not update.'
+      render :edit
+    end
+  end
   end
 
   private
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :text, prototype_images_attributes: [:image, :image_type])
+    params.require(:prototype).permit(:title, :catch_copy, :text, prototype_images_attributes: [:id, :image, :image_type]).merge(user_id: current_user.id)
   end
 
 end
