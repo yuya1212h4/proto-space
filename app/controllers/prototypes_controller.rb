@@ -1,4 +1,6 @@
 class PrototypesController < ApplicationController
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+
   def index
     @prototypes = Prototype.includes(:user)
   end
@@ -20,15 +22,12 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
   end
 
   def update
-    @prototype = Prototype.find(params[:id])
     @prototype.prototype_images
     if @prototype.user_id == current_user.id
       binding
@@ -41,7 +40,6 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    @prototype = Prototype.find(params[:id])
     if @prototype.user_id == current_user.id
       @prototype.destroy
       redirect_to root_path, notice: 'Prototype was successfully deleted.'
@@ -56,4 +54,7 @@ class PrototypesController < ApplicationController
     params.require(:prototype).permit(:title, :catch_copy, :text, prototype_images_attributes: [:id, :image, :image_type]).merge(user_id: current_user.id)
   end
 
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
 end
