@@ -25,4 +25,5 @@ class Prototype < ApplicationRecord
     attributed['image'].blank?
   end
 
+  paginates_per 8 #1ページあたりの表示数
 end
