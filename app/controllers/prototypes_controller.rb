@@ -28,8 +28,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.user_id == current_user.id
-      @prototype.update(prototype_params)
+    if @prototype.update(prototype_params)
       redirect_to root_path, notice: 'Prototype was successfully updated.'
     else
       flash[:alert] = 'Prototype do not update.'
