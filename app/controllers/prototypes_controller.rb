@@ -43,7 +43,7 @@ class PrototypesController < ApplicationController
       redirect_to root_path, notice: 'Prototype was successfully deleted.'
     else
       flash[:alert] = 'Prototype do not delete.'
-      render :new
+      render :index
     end
   end
 
