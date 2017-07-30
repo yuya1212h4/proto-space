@@ -28,7 +28,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    @prototype.prototype_images
     if @prototype.user_id == current_user.id
       @prototype.update(prototype_params)
       redirect_to root_path, notice: 'Prototype was successfully updated.'
