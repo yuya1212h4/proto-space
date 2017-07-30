@@ -5,7 +5,7 @@
         .col-md-12
           .proto-new-title
             = f.text_field :title, placeholder: 'Title'
-      = f.fields_for :prototype_images, @prototype.prototype_images.main do |pf|        
+      = f.fields_for :prototype_images, @prototype.prototype_images.main do |pf|
         .row
           .col-md-12
             .cover-image-upload
