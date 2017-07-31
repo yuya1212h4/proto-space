@@ -19,6 +19,5 @@
 # Ignore images directory
 *.png
 *.jpeg
-*.svg
 *.gif
 *.jpg
