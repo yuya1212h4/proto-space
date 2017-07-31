@@ -10,6 +10,7 @@
       %span.num
         = prototype.likes_count
 - else
-  = image_tag 'icon_heart.svg'
-  %span.num
-    = prototype.likes_count
+  = button_to prototype_likes_path(prototype), id: 'like-button', class: 'btn btn-default' do
+    = image_tag 'icon_heart.svg'
+    %span.num
+      = prototype.likes_count
