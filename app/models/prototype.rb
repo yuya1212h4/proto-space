@@ -1,8 +1,7 @@
 class Prototype < ApplicationRecord
 
   belongs_to :user
-  # FIXME: prototypeを削除するときにエラーが出るために、一度コメントアウト
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :prototype_images, dependent: :destroy
   accepts_nested_attributes_for :prototype_images, allow_destroy: true, reject_if: :reject_posts
