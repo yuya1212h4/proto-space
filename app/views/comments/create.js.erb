@@ -1,0 +1,3 @@
+$(".num").text("(<%= @comments.size %>)")
+$('#comment-button').html("<%= j(render @comments ) %>");
+$("#comment_content").val('');

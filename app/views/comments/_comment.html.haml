@@ -1,0 +1,9 @@
+.media
+  .media-left
+    = link_to user_path(comment.user) do
+      = image_tag (comment.user.user_image ||= ''), class: 'media-object', alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;"
+  .media-body
+    %h4.media-heading
+      = comment.user.name
+    %p
+      = comment.content
