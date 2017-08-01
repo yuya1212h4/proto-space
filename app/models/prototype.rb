@@ -30,7 +30,7 @@ class Prototype < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
-  scope :popular, -> { order("likes_count DESC") }
-  scope :newest, -> { order("created_at DESC")}
+  scope :popular, -> { order(likes_count: :DESC) }
+  scope :newest, -> { order(created_at: :DESC) }
 
 end
