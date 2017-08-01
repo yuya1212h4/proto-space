@@ -46,6 +46,7 @@
     .col-md-8
       #comment-button
         = render @comments
+    - if user_signed_in?
       = form_for [@prototype, @comment], html: {class: 'form-inline'}, remote: true do |f|
         %h4 Write a comment
         .row
