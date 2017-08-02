@@ -17,5 +17,4 @@
           .proto-posted
             = I18n.l prototype.created_at, format: :monthday
         %ul.proto-tag-list.list-inline
-          %li
-            = link_to "iPad", "#", class: "btn btn-default"
+          = render 'tags/tag_list', tag_list: prototype.tag_list
