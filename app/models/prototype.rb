@@ -33,4 +33,6 @@ class Prototype < ApplicationRecord
   scope :popular, -> { order(likes_count: :DESC) }
   scope :newest, -> { order(created_at: :DESC) }
 
+  acts_as_taggable            # acts_as_taggable_on :tags のエイリアス
+
 end
