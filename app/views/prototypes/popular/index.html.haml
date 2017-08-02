@@ -10,7 +10,8 @@
           = link_to 'Popular PROTO', prototypes_popular_index_path
         %li{role: "presentation"}
           = link_to 'Newest PROTO', root_path
-      %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
+      .col-lg-1
+      = link_to 'VIEW TAGS', tags_path, class: 'btn btn-default'
 .container.proto-list
   .row
     = render partial: 'prototypes/prototype', collection: @prototypes
