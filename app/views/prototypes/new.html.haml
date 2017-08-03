@@ -13,9 +13,8 @@
               = pf.hidden_field :image_type, value: :main
           .col-md-12
             %ul.proto-sub-list.list-group
-              = render 'prototypes/sub_form', f: f
-              = render 'prototypes/sub_form', f: f
-
+              - 2.times do |i|
+                = render 'prototypes/sub_form', f: f, i: i
               %li.list-group-item.col-md-4
                 .image-upload-plus
                   %span +
