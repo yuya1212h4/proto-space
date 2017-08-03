@@ -9,20 +9,22 @@
         .row
           .col-md-12
             .cover-image-upload
-              = image_tag @prototype.main_prototype_image, class: "cover-image-upload"
+              #js-image-upload
+                = image_tag @prototype.main_prototype_image, class: "cover-image-upload"
               = pf.file_field :image
               = pf.hidden_field :image_type, value: :main
           .col-md-12
             %ul.proto-sub-list.list-group
-              - @prototype.prototype_images.sub.each do |sub_image|
+              - @prototype.prototype_images.sub.each_with_index do |sub_image, i|
                 %li.list-group-item.col-md-4
-                  .image-upload
-                    = image_tag sub_image.image, class: 'image-upload'
+                  .image-upload{ class: "image-upload-#{i}" }
+                    %div{ id: "sub-image-upload-#{i}" }
+                      = image_tag sub_image.image, class: 'image-upload'
                     = f.fields_for :prototype_images, sub_image do |pf|
                       = pf.file_field :image
                       = pf.hidden_field :image_type, value: :sub
-              - (3- @prototype.prototype_images.size).times do
-                = render 'prototypes/sub_form', f: f
+              - (3- @prototype.prototype_images.size).times do |i|
+                = render 'prototypes/sub_form', f: f, i: i
               %li.list-group-item.col-md-4
                 .image-upload-plus
                   %span +
