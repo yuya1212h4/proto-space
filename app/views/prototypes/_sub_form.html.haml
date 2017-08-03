@@ -1,5 +1,6 @@
 %li.list-group-item.col-md-4
-  .image-upload
+  .image-upload{ class: "image-upload-#{i}" }
+    %div{ id: "sub-image-upload-#{i}" }
     = f.fields_for :prototype_images do |pf|
       = pf.file_field :image
       = pf.hidden_field :image_type, value: :sub
