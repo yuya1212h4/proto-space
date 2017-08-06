@@ -1,16 +1,21 @@
 $(document).on('turbolinks:load', function() {
-  $('.cover-image-upload').on('change', function(e) {
+  $(document).on('change', '.cover-image-upload', function(e) {
     var $preview = $("#js-image-upload");
     imageupload(e, $preview);
   });
 
-  $('.image-upload-0').on('change', function(e) {
-    var $preview = $("#sub-image-upload-0");
+  $(document).on('change', '.image-upload-1',  function(e) {
+    var $preview = $("#sub-image-upload-1");
     imageupload(e, $preview);
   });
 
-  $('.image-upload-1').on('change', function(e) {
-    var $preview = $("#sub-image-upload-1");
+  $(document).on('change', '.image-upload-2', function(e) {
+    var $preview = $("#sub-image-upload-2");
+    imageupload(e, $preview);
+  });
+
+  $(document).on('change', '.image-upload-3', function(e) {
+    var $preview = $("#sub-image-upload-3");
     imageupload(e, $preview);
   });
 
