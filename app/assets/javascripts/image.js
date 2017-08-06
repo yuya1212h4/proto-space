@@ -34,7 +34,7 @@ function imageupload(e, $preview) {
       // $previewの領域の中にロードした画像を表示するimageタグを追加
       $preview.prepend($('<img>').attr({
         src: e.target.result,
-        class: ".image-upload",
+        class: "user-image",
         title: file.name
       }));
     };
