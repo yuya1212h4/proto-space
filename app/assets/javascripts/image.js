@@ -18,8 +18,7 @@ $(document).on('turbolinks:load', function() {
 
 function imageupload(e, $preview) {
   var file = e.target.files[0],
-      reader = new FileReader(),
-      t = this;
+      reader = new FileReader();      
 
   // 画像ファイル以外の場合は何もしない
   if(file.type.indexOf("image") < 0) {
