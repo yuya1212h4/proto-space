@@ -13,12 +13,11 @@
               = pf.file_field :image
               = pf.hidden_field :image_type, value: :main
           .col-md-12
-            %ul.proto-sub-list.list-group
-              - 2.times do |i|
-                = render 'prototypes/sub_form', f: f, i: i
-              %li.list-group-item.col-md-4
+            %ul.proto-sub-list.list-group#add-form
+              %li.list-group-item.col-md-4#remove-form
                 .image-upload-plus
                   %span +
+
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
