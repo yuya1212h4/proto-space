@@ -14,7 +14,7 @@
               = pf.file_field :image
               = pf.hidden_field :image_type, value: :main
           .col-md-12
-            %ul.proto-sub-list.list-group
+            %ul.proto-sub-list.list-group#add-form
               - @prototype.prototype_images.sub.each_with_index do |sub_image, i|
                 %li.list-group-item.col-md-4
                   .image-upload{ class: "image-upload-#{i}" }
@@ -23,11 +23,10 @@
                     = f.fields_for :prototype_images, sub_image do |pf|
                       = pf.file_field :image
                       = pf.hidden_field :image_type, value: :sub
-              - (3- @prototype.prototype_images.size).times do |i|
-                = render 'prototypes/sub_form', f: f, i: i
-              %li.list-group-item.col-md-4
-                .image-upload-plus
-                  %span +
+              - if @prototype.prototype_images.size != 4
+                %li.list-group-item.col-md-4#remove-form
+                  .image-upload-plus
+                    %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
