@@ -8,12 +8,13 @@
           .user-name_image.row
             .user-name.col-md-10
               = f.text_field :name, placeholder: "Username", autofocus: true
-            .user-image.col-md-2
-              %button.btn.btn-lg.btn-primary.btn-block
-                = f.label :Addimage
+            .col-md-2
+              .user-image.cover-image-upload
+                #js-image-upload
                 = f.file_field :user_image
+                = button_tag "Change Image", class: 'btn btn-primary'
           = f.email_field :email, placeholder: "E-Mail"
-          = f.text_field :password, placeholder: "Password"
+          = f.password_field :password, placeholder: "Password"
         .col-md-12
           %h4 Member of
           .user-user-member.row
