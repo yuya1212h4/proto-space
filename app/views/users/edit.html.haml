@@ -11,9 +11,12 @@
                   %li= msg
             .user-name.col-md-10
               = f.text_field :name
-            .user-image.col-md-2{style: 'background-image: url(http://泣ける動画.com/wp-content/uploads/2015/01/t0205-01.jpg);'}
-              %button.btn.btn-primary Change image
-              = f.file_field :user_image
+            .col-md-2
+              .user-image.cover-image-upload
+                #js-image-upload
+                  = image_tag (current_user.user_image), class: 'user-image'
+                = f.file_field :user_image
+                = button_tag "Change Image", class: 'btn btn-primary'
             .user-email
               = f.email_field :email, placeholder: "E-Mail"
             .user-password
