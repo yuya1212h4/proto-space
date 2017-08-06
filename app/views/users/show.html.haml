@@ -3,7 +3,7 @@
     .media
       .media-left
         = link_to user_path(@user) do
-          %img.media-object{alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;"}/
+          = image_tag (@user.user_image ||= ''), class: 'media-object', alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;"          
       .media-body
         %h4#top-aligned-media.media-heading
           Top aligned media
