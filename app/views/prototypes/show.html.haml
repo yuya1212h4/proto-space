@@ -5,7 +5,7 @@
         .media-left
           = link_to user_path(@prototype.user) do
             .media-object
-              = image_tag @prototype.user.user_image.url , alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;" if @prototype.user.user_image.present?
+              = image_tag @prototype.user.user_image.url , alt: "64x64", "data-holder-rendered": "true", "data-src": "holder.js/64x64", style: "width: 64px; height: 64px;", class: "media-object" if @prototype.user.user_image.present?
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title

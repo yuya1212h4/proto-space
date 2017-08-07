@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  mount_uploader :user_image, ImageUploader
+
    def update_without_current_password(params, *options)
      params.delete(:current_password)
 
