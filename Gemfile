@@ -59,5 +59,16 @@ group :development do
   gem 'erb2haml'
 end
 
+group :test do
+  gem 'faker'
+  gem 'rspec-rails', "~> 3.5.0"
+  gem 'factory_girl_rails', "~> 4.4.1"
+  gem 'rails-controller-testing', require: false
+  gem "capybara"            #ユーザーとWebアプリケーションのやり取りをプログラム上で簡単にシュミレートを可能にする
+  gem "database_cleaner"    #データベースをまっさらな状態で各specが実行できるようにする
+  gem "launchy"             #テストのデバック用
+  gem "poltergeist"         #capybaraのためのドライバ
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
