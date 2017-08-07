@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
 
 function buildhtmlform(i) {
   html = `
-    <li class = 'list-group-item col-md-4' style ='display: list-item;' data-image-id=${i}>
+    <li class = 'list-group-item col-md-4' style ='display: list-item;'>
         <div class = 'image-upload image-upload-${i}'>
           <div id = "sub-image-upload-${i}"></div>
             <input type = 'file' name = "prototype[prototype_images_attributes][${i}][image]" id = "prototype_prototype_images_attributes_${i}_image" />
