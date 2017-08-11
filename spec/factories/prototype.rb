@@ -4,8 +4,6 @@ FactoryGirl.define do
     catch_copy         { Faker::Lorem.sentence }
     text               { Faker::Lorem.sentence }
     likes_count        0
-    created_at         { DateTime.now }
-    updated_at         { DateTime.now }
     user
 
     after(:create) do |prototype|
