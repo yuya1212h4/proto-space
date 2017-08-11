@@ -111,6 +111,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      extension_whitelist_error: "許可リストに追加をしてください"
       accepted: を受諾してください
       blank: を入力してください
       Name: あいうえお
