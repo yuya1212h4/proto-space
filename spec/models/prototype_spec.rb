@@ -71,7 +71,7 @@ describe Prototype, type: :model do
     end
   end
 
-  describe "#set_main_thumbnails" do
+  describe "#set_main_images" do
     it "returns an array containing main_images" do
       prototype = create(:prototype)
       expect(prototype.main_prototype_image).to eq (prototype.prototype_images.first.image.url)
