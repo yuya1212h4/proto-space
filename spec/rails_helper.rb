@@ -43,6 +43,10 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
+  FactoryGirl::SyntaxRunner.class_eval do
+   include ActionDispatch::TestProcess
+  end
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
