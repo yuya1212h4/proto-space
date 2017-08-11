@@ -29,7 +29,7 @@ describe Prototype, type: :model do
 
     context "without valid attributes" do
       it "is missing a title" do
-        prototype = build(:prototype, title: nil)
+        prototype.title = nil
         prototype.valid?
         expect(prototype.errors[:title]).to include("を入力してください")
       end
