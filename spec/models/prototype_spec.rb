@@ -35,13 +35,15 @@ describe Prototype, type: :model do
       end
 
       it "is missing a catch_copy" do
-        prototype = build(:prototype, catch_copy: nil)
+        prototype.catch_copy = nil
+        # prototype = build(:prototype, catch_copy: nil)
         prototype.valid?
         expect(prototype.errors[:catch_copy]).to include("を入力してください")
       end
 
       it "is missing a text" do
-        prototype = build(:prototype, text: nil)
+        prototype.text = nil
+        # prototype = build(:prototype, text: nil)
         prototype.valid?
         expect(prototype.errors[:text]).to include("を入力してください")
       end
