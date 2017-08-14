@@ -1,5 +1,9 @@
 .container.proto-new
   = form_for @prototype do |f|
+    - if @prototype.errors.any?
+      %ul.alert.alert-danger
+        - @prototype.errors.full_messages.each do |msg|
+          %li= msg
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
