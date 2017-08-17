@@ -78,4 +78,27 @@ describe PrototypesController, type: :controller do
         end
       end
     end
+
+    describe "GET #show" do
+      before do
+        get :show, params: { id: prototype.id }
+      end
+
+      it "assigns the requested prototype to @prototype" do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      it "assigns the requested comment to @comment" do
+        expect(assigns(:comment)).to be_a_new(Comment)
+      end
+
+      it "assigns the requested comment to @comments" do
+        comments =  create_list(:comment, 3, prototype: prototype)
+        expect(assigns(:comments)).to eq comments
+      end
+
+      it "renders the :show template" do
+        expect(response).to render_template :show
+      end
+    end
 end
