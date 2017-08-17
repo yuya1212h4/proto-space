@@ -39,4 +39,43 @@ describe PrototypesController, type: :controller do
         expect(response).to render_template :new
       end
     end
+
+    describe "POST #create" do
+      context "with valid attributes" do
+        before do
+          post :create, params: { prototype: attributes_for(:prototype) }
+        end
+
+        it "saves the new prototype in the database" do
+          expect{ prototype }.to change{ Prototype.count }.by(1)
+        end
+
+        it "redirects to root_path" do
+          expect(response).to redirect_to root_path
+        end
+
+        it "shows flash messages to show save the prototype successfully" do
+          expect(flash[:notice]).to eq 'Successful posting of prototype.'
+        end
+      end
+
+      describe "with invalid attributed" do
+        before do
+          post :create, params: { prototype: attributes_for(:prototype, title: nil) }
+        end
+
+        it "does not save the new prototype in the database" do
+          prototype = build(:prototype, title: nil)
+          expect{ prototype }.not_to change { Prototype.count }
+        end
+
+        it "renders the :new template" do
+          expect(response).to render_template :new
+        end
+
+        it "shows flash messages to show save the prototype unsuccessfully" do
+          expect(flash[:alert]).to eq 'prototype do not create'
+        end
+      end
+    end
 end
