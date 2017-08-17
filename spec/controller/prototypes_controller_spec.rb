@@ -162,4 +162,29 @@ describe PrototypesController, type: :controller do
         end
       end
     end
+
+    describe "DELETE #destroy" do
+      before do
+        delete :destroy, params: { id: prototype.id }
+      end
+
+      it "assigns the requested prototype to @prototype to @prototype" do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      it "deletes the prototype" do
+        prototype = create(:prototype)
+        expect{ prototype.destroy }.to change{ Prototype.count }.by(-1)
+      end
+
+      it "redirects to root_path" do
+        expect(response).to redirect_to root_path
+      end
+
+      it "shows flash messaeg to show delete prototype successfully" do
+        expect(flash[:notice]).to eq 'Prototype was successfully deleted.'
+      end
+    end
+
+  end
 end
