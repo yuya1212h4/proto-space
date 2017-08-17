@@ -21,3 +21,13 @@ describe UsersController, type: :controller do
         expect(response).to render_template :show
       end
     end
+
+    describe "GET #edit" do
+      before do
+        get :edit, params: { id: user.id }
+      end
+
+      it "renders the :edit template" do
+        expect(response).to render_template :edit
+      end
+    end
