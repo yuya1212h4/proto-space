@@ -187,4 +187,42 @@ describe PrototypesController, type: :controller do
     end
 
   end
+
+  context "without use login" do
+    describe "GET #new" do
+      it "redirects sign_in page" do
+        get :new
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "POST #create" do
+      it "redirects sign_in page" do
+        post :create, params: { prototype: attributes_for(:prototype) }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "GET #edit" do
+      it "redirects sign_in page" do
+        get :edit, params: { id: prototype.id }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "redirects sign_in page" do
+        patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype) }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "redirects sign_in page" do
+        delete :destroy, params: { id: prototype.id }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
 end
