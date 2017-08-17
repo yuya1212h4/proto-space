@@ -115,4 +115,51 @@ describe PrototypesController, type: :controller do
         expect(response).to render_template :edit
       end
     end
+
+    describe "PATCH #update" do
+      context "with valid attributes" do
+        before do
+          patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype) }
+        end
+
+        it "assigns the requested prototype to @prototype" do
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it "updates attributes of prototype" do
+          prototype = build(:prototype, title: "hoge")
+          expect(prototype.title).to eq "hoge"
+        end
+
+        it "redirects to root_path" do
+          expect(response).to redirect_to root_path
+        end
+
+        it "shows flash message to show update prototype successfully" do
+          expect(flash[:notice]).to eq 'Prototype was successfully updated.'
+        end
+      end
+
+      context "with invalid attributes" do
+        before do
+          patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype, title: nil) }
+        end
+
+        it "assigns the requested prototype to @prototype" do
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it "does not save the new prototype" do
+          expect(prototype.title).not_to eq "hoge"
+        end
+
+        it "renders the :show template" do
+          expect(response).to render_template :edit
+        end
+
+        it "shows flash message to show updatee prototype unsuccessfully" do
+          expect(flash[:alert]).to eq 'Prototype do not update.'
+        end
+      end
+    end
 end
