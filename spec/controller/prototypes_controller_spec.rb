@@ -43,19 +43,22 @@ describe PrototypesController, type: :controller do
 
     describe "POST #create" do
       context "with valid attributes" do
-        before do
-          post :create, params: { prototype: attributes_for(:prototype) }
-        end
+        subject {
+          Proc.new { post :create, params: { prototype: attributes_for(:prototype) } }
+        }
 
         it "saves the new prototype in the database" do
+          subject.call
           expect{ prototype }.to change{ Prototype.count }.by(1)
         end
 
         it "redirects to root_path" do
+          subject.call
           expect(response).to redirect_to root_path
         end
 
         it "shows flash messages to show save the prototype successfully" do
+          subject.call
           expect(flash[:notice]).to eq 'Successful posting of prototype.'
         end
       end
