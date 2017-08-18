@@ -64,20 +64,24 @@ describe PrototypesController, type: :controller do
       end
 
       describe "with invalid attributed" do
-        before do
-          post :create, params: { prototype: attributes_for(:prototype, title: nil) }
-        end
+
+        let!(:prototype){ create(:prototype, user: user) }
+
+        subject {
+          Proc.new { post :create, params: { prototype: attributes_for(:prototype, title: nil) } }
+        }
 
         it "does not save the new prototype in the database" do
-          prototype = build(:prototype, title: nil)
           expect{ prototype }.not_to change { Prototype.count }
         end
 
         it "renders the :new template" do
+          subject.call
           expect(response).to render_template :new
         end
 
         it "shows flash messages to show save the prototype unsuccessfully" do
+          subject.call
           expect(flash[:alert]).to eq 'prototype do not create'
         end
       end
