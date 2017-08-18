@@ -18,7 +18,8 @@ describe PrototypesController, type: :controller do
       end
 
       it 'assigns the requested prototypes to @prototypes' do
-        expect(assigns(:prototypes)).to include prototype
+        prototypes = create_list(:prototype, 3)
+        expect(assigns(:prototypes)).to match(prototypes.sort{ |a,b| b.created_at <=> a.created_at })
       end
 
       it 'renders the :index template' do
