@@ -124,6 +124,7 @@ describe PrototypesController, type: :controller do
         }
 
         it "assigns the requested prototype to @prototype" do
+          subject.call
           expect(assigns(:prototype)).to eq prototype
         end
 
@@ -133,10 +134,12 @@ describe PrototypesController, type: :controller do
         end
 
         it "redirects to root_path" do
+          subject.call
           expect(response).to redirect_to root_path
         end
 
         it "shows flash message to show update prototype successfully" do
+          subject.call
           expect(flash[:notice]).to eq 'Prototype was successfully updated.'
         end
       end
