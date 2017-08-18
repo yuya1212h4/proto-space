@@ -171,6 +171,8 @@ describe PrototypesController, type: :controller do
     end
 
     describe "DELETE #destroy" do
+      let!(:prototype){ create(:prototype, user: user) }
+
       subject {
         Proc.new { delete :destroy, params: { id: prototype.id } }
       }
@@ -181,8 +183,7 @@ describe PrototypesController, type: :controller do
       end
 
       it "deletes the prototype" do
-        prototype = create(:prototype)
-        expect{ prototype.destroy }.to change{ Prototype.count }.by(-1)
+        expect{ subject.call }.to change{ Prototype.count }.by(-1)
       end
 
       it "redirects to root_path" do
