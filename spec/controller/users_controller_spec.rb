@@ -39,21 +39,41 @@ describe UsersController, type: :controller do
     end
 
     describe "PATCH #update" do
-      before do
-        patch :update, params: { id: user.id, user: attributes_for(:user) }
+      context "with valid attributes" do
+        subject {
+          Proc.new { patch :update, params: { id: user.id, user: attributes_for(:user) } }
+        }
+
+        it "changes current_user attributes" do
+          user.name = "hoge"
+          expect(user.name).to eq "hoge"
+        end
+
+        it "redirect_to root_path" do
+          subject.call
+          expect(response).to redirect_to root_path
+        end
+
+        it "sends flash mesages" do
+          subject.call
+          expect(flash[:success]).to eq "Successfully edit your profile."
+        end
       end
 
-      it "changes current_user attributes" do
-        user.name = "hoge"
-        expect(user.name).to eq "hoge"
-      end
+      context "with invalid attributed" do
+        subject {
+          Proc.new { patch :update, params: { id: user.id, user: attributes_for(:user, name: nil) } }
+        }
 
-      it "redirect_to root_path" do
-        expect(response).to redirect_to root_path
-      end
+        it "renders the :edit template" do
+          subject.call
+          expect(response).to render_template :edit
+        end
 
-      it "sends flash mesages" do
-        expect(flash[:success]).to eq "Successfully edit your profile."
+        it "shows flash messages to show save the prototype unsuccessfully" do
+          subject.call
+          expect(flash[:alert]).to eq "Failure edit your profile."
+        end
       end
     end
   end
