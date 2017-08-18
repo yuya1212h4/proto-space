@@ -79,16 +79,20 @@ describe UsersController, type: :controller do
   end
 
   context "without user login" do
+    subject {
+      Proc.new { patch :update, params: { id: user.id, user: attributes_for(:user) } }
+    }
+    
     describe "GET #edit" do
       it "redirects sign_in page" do
-        get :edit, params: { id: user.id }
+        subject.call
         expect(response).to redirect_to new_user_session_path
       end
     end
 
     describe "PATCH #update" do
       it "redirects sign_in page" do
-        patch :update, params: { id: user.id, user: attributes_for(:user) }
+        subject.call
         expect(response).to redirect_to new_user_session_path
       end
     end
