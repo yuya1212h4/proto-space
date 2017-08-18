@@ -119,9 +119,9 @@ describe PrototypesController, type: :controller do
 
     describe "PATCH #update" do
       context "with valid attributes" do
-        before do
-          patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype) }
-        end
+        subject {
+          Proc.new { patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype)} }
+        }
 
         it "assigns the requested prototype to @prototype" do
           expect(assigns(:prototype)).to eq prototype
