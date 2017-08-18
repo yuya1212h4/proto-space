@@ -6,7 +6,7 @@ describe UsersController, type: :controller do
 
   context "with user login" do
     before do
-      sign_in user
+      login_user(user)
     end
 
     describe "GET #show" do
