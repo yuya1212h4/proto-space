@@ -150,6 +150,7 @@ describe PrototypesController, type: :controller do
         }
 
         it "assigns the requested prototype to @prototype" do
+          subject.call
           expect(assigns(:prototype)).to eq prototype
         end
 
@@ -158,10 +159,12 @@ describe PrototypesController, type: :controller do
         end
 
         it "renders the :show template" do
+          subject.call
           expect(response).to render_template :edit
         end
 
         it "shows flash message to show updatee prototype unsuccessfully" do
+          subject.call
           expect(flash[:alert]).to eq 'Prototype do not update.'
         end
       end
