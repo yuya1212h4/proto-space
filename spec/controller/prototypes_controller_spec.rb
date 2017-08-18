@@ -43,13 +43,15 @@ describe PrototypesController, type: :controller do
 
     describe "POST #create" do
       context "with valid attributes" do
+
+        let!(:prototype){ create(:prototype, user: user) }
+
         subject {
           Proc.new { post :create, params: { prototype: attributes_for(:prototype) } }
         }
 
         it "saves the new prototype in the database" do
-          subject.call
-          expect{ prototype }.to change{ Prototype.count }.by(1)
+          expect{ subject.call }.to change{ Prototype.count }.by(1)
         end
 
         it "redirects to root_path" do
@@ -72,7 +74,7 @@ describe PrototypesController, type: :controller do
         }
 
         it "does not save the new prototype in the database" do
-          expect{ prototype }.not_to change { Prototype.count }
+          expect{ subject.call }.not_to change { Prototype.count }
         end
 
         it "renders the :new template" do
