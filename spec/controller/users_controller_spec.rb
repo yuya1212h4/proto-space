@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe UsersController, type: :controller do
   let(:user){ create(:user) }
+  let(:prototype){ create(:prototype) }
 
   context "with user login" do
     before do
@@ -15,6 +16,11 @@ describe UsersController, type: :controller do
 
       it "assigns the requested to @user" do
         expect(assigns(:user)).to eq user
+      end
+
+      it "assigns the requested to @prototypes" do
+        prototypes = create_list(:prototype, 3, user: user)
+        expect(assigns(:prototypes)).to match(prototypes.sort{ |a,b| b.created_at <=> a.created_at })
       end
 
       it "renders the :show templates" do
