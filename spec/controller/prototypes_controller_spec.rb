@@ -7,7 +7,7 @@ describe PrototypesController, type: :controller do
   let(:like){ create(:like, prototype: prototype) }
 
 
-  context "with usr login" do
+  context "with user login" do
     before do
       sign_in user
     end
@@ -188,7 +188,7 @@ describe PrototypesController, type: :controller do
 
   end
 
-  context "without use login" do
+  context "without user login" do
     describe "GET #new" do
       it "redirects sign_in page" do
         get :new
