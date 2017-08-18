@@ -145,9 +145,9 @@ describe PrototypesController, type: :controller do
       end
 
       context "with invalid attributes" do
-        before do
-          patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype, title: nil) }
-        end
+        subject {
+          Proc.new { patch :update, params: { id: prototype.id, prototype: attributes_for(:prototype, title: nil) } }
+        }
 
         it "assigns the requested prototype to @prototype" do
           expect(assigns(:prototype)).to eq prototype
