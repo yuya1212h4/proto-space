@@ -171,11 +171,12 @@ describe PrototypesController, type: :controller do
     end
 
     describe "DELETE #destroy" do
-      before do
-        delete :destroy, params: { id: prototype.id }
-      end
+      subject {
+        Proc.new { delete :destroy, params: { id: prototype.id } }
+      }
 
       it "assigns the requested prototype to @prototype to @prototype" do
+        subject.call
         expect(assigns(:prototype)).to eq prototype
       end
 
@@ -185,10 +186,12 @@ describe PrototypesController, type: :controller do
       end
 
       it "redirects to root_path" do
+        subject.call
         expect(response).to redirect_to root_path
       end
 
       it "shows flash messaeg to show delete prototype successfully" do
+        subject.call
         expect(flash[:notice]).to eq 'Prototype was successfully deleted.'
       end
     end
