@@ -15,7 +15,7 @@ class Prototype < ApplicationRecord
   end
 
   def reject_posts(attributed)
-    attributed['image'].present?
+    attributed['image'].blank?
   end
 
   paginates_per 8 #1ページあたりの表示数
