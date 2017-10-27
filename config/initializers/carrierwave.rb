@@ -12,9 +12,8 @@ CarrierWave.configure do |config|
 
     case Rails.env
     when 'development'
-        config.storage = :fog
-        config.fog_directory  = 'protospace-yuya'
-        config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/protospace-yuya'
+        config.storage = :file
+        config.enable_processing = false
     when 'production'
         config.storage = :fog
         config.fog_directory  = 'protospace-yuya'
