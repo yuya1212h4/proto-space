@@ -38,7 +38,6 @@ gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'carrierwave'
-gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 4.0'
@@ -72,6 +71,7 @@ end
 
 group :productoin do
   gem 'rails_12factor'
+  gem 'fog'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
